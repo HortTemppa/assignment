@@ -1,15 +1,23 @@
-import React, { createContext, useContext } from "react";
-import dateService from '../services/dateService'
+import React, { createContext, useContext, useMemo } from "react";
+import dateService from "../services/dateService";
 
 const serviceContext = createContext(undefined);
 
-const export ServiceProvider = () => {
+export const DateProvider = ({ children }) => {
+  const service = useMemo(() => new dateService(), []);
 
-    
+  return (
+    <serviceContext.Provider value={service}>
+      {children}
+    </serviceContext.Provider>
+  );
+};
 
-    return <serviceContext.Provider>{children}</serviceContext.Provider>
-}
+export function useDateService() {
+  const service = useContext(serviceContext);
 
-export function useDateService = () => {
-
+  if (service === undefined) {
+    throw new Error("useDateService called outside of provider");
+  }
+  return service;
 }
