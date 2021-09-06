@@ -6,5 +6,6 @@ export default class holidayPlanner {
 
   setHolidays() {
     fetch("./dates.json").then((response) => (this.holidays = response.data));
+    console.log(this.holidays);
   }
 }

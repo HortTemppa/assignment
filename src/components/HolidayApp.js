@@ -9,8 +9,8 @@ const HolidayApp = () => {
 
   return (
     <>
-      <HolidayInput />
-      <Response />
+      <HolidayInput setError={setError} setMessage={setMessage} />
+      <Response error={error} message={message} />
     </>
   );
 };

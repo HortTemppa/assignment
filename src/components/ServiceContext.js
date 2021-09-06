@@ -13,7 +13,7 @@ export const DateProvider = ({ children }) => {
   );
 };
 
-export function useDateService() {
+export function useHolidayPlanner() {
   const service = useContext(serviceContext);
 
   if (service === undefined) {
