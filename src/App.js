@@ -1,10 +1,13 @@
-import './App.css';
+import "./App.css";
+
+import { DateProvider } from "./components/ServiceContext";
+import HolidayApp from "./components/HolidayApp";
 
 function App() {
   return (
-    <div className="App">
-     
-    </div>
+    <DateProvider>
+      <HolidayApp />
+    </DateProvider>
   );
 }
 

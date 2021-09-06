@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useMemo } from "react";
-import dateService from "../services/dateService";
+import holidayPlanner from "../services/holidayPlanner";
 
 const serviceContext = createContext(undefined);
 
 export const DateProvider = ({ children }) => {
-  const service = useMemo(() => new dateService(), []);
+  const service = useMemo(() => new holidayPlanner(), []);
 
   return (
     <serviceContext.Provider value={service}>

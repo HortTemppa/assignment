@@ -1,6 +1,6 @@
-export default class dateService {
+export default class holidayPlanner {
   constructor() {
-    let holidays = [];
+    this.holidays = [];
     this.setHolidays();
   }
 
