@@ -12,8 +12,10 @@ const HolidayInput = ({ setError, setMessage }) => {
   function handleSubmit(e) {
     e.preventDefault();
 
+    setHolidays(0);
+
     try {
-      setHolidays(holidayPlanner.countHolidays(endDate, startDate));
+      setHolidays(holidayPlanner.countHolidays(startDate, endDate));
     } catch (error) {
       setError(true);
       setMessage(error.message);
