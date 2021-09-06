@@ -17,6 +17,7 @@ const HolidayInput = ({ setError, setMessage }) => {
     } catch (error) {
       setError(true);
       setMessage(error.message);
+      console.log(error.message);
 
       setTimeout(() => {
         setError(false);
