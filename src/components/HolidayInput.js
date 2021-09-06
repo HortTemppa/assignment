@@ -25,6 +25,8 @@ const HolidayInput = ({ setError, setMessage }) => {
     }
   }
 
+  console.log("Holidays:", holidays);
+
   return (
     <div>
       <h1>Holiday Planner</h1>
@@ -41,8 +43,8 @@ const HolidayInput = ({ setError, setMessage }) => {
           End Date:{" "}
           <input
             type="date"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
           ></input>
         </p>
         <button type="submit">Send</button>
