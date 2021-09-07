@@ -4,9 +4,13 @@ You can find a running demo at: https://horttemppa.github.io/assignment/
 
 I decided to write the class in JavaScript and write a small React app that utilizes the HolidayPlanner class. For the date manipulation functions I decided to use "date-fns" library which is considered to be the best JavaScript date utility function library. With the help of that library I created a bunch of my own functions to meet the needs.
 
-If you like to run the app locally:
+---
 
-In the project directory, you can run:
+If you like to run the app locally clone the repository and run:
+
+### `npm install`
+
+To start the app locally:
 
 ### `npm start`
 
