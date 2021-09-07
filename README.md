@@ -1,3 +1,9 @@
+This project has been bootstrapped with create-react-app.
+
+You can find a running demo at: [link]
+
+I decided to write the class in JavaScript and write a small React app that utilizes the HolidayPlanner class. For the date manipulation functions I decided to use "date-fns" library which is considered to be the best JavaScript date utility function library. With the help of that library I created a bunch of my own functions to meet the needs.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
