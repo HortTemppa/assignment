@@ -5,21 +5,24 @@ const HolidayInput = ({ setError, setMessage }) => {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
 
-  const [holidays, setHolidays] = useState();
-
   const holidayPlanner = useHolidayPlanner();
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    setHolidays(0);
-
     try {
-      setHolidays(holidayPlanner.countHolidays(startDate, endDate));
+      const holidays = holidayPlanner.countHolidays(
+        startDate,
+        endDate,
+        "Finland"
+      );
+
+      setMessage(
+        `This interval will consume ${holidays} days of your available vacation days.`
+      );
     } catch (error) {
       setError(true);
       setMessage(error.message);
-      console.log(error.message);
 
       setTimeout(() => {
         setError(false);
@@ -27,8 +30,6 @@ const HolidayInput = ({ setError, setMessage }) => {
       }, 3000);
     }
   }
-
-  console.log("Holidays:", holidays);
 
   return (
     <div>

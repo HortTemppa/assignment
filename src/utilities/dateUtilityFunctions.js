@@ -63,16 +63,16 @@ export function countSundaysAndNationalHolidays(startDate, endDate) {
     end: parseISO(endDate),
   });
 
-  daysInInterval.map((day) => {
+  daysInInterval.map((intervalDay) => {
     nationalHolidays.Finland.map((nationalHoliday) => {
-      if (nationalHoliday === format(day, "yyyy-MM-dd")) {
+      if (nationalHoliday === format(intervalDay, "yyyy-MM-dd")) {
         return daysToSubtract++;
       } else {
         return null;
       }
     });
 
-    if (isSunday(day)) {
+    if (isSunday(intervalDay)) {
       return daysToSubtract++;
     } else {
       return null;

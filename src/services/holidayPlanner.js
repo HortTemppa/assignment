@@ -7,7 +7,7 @@ import {
 } from "../utilities/dateUtilityFunctions.js";
 
 export default class holidayPlanner {
-  countHolidays(startDate, endDate) {
+  countHolidays(startDate, endDate, country) {
     //check if the startDate is before endDate and return an error if it is not
 
     if (!isStartBeforeEnd(startDate, endDate)) {
