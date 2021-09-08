@@ -4,10 +4,17 @@ import {
   isWithinHolidayPeriod,
   isStartBeforeEnd,
   countSundaysAndNationalHolidays,
+  lengthIsValid,
 } from "../utilities/dateUtilityFunctions.js";
 
 export default class holidayPlanner {
-  countHolidays(startDate, endDate, country) {
+  countHolidays(startDate, endDate) {
+    //check that the length of the time span is not over 50 days
+
+    if (!lengthIsValid(startDate, endDate)) {
+      throw new Error("The selected holiday can't be over 50 days.");
+    }
+
     //check if the startDate is before endDate and return an error if it is not
 
     if (!isStartBeforeEnd(startDate, endDate)) {

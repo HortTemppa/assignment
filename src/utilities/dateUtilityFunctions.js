@@ -6,19 +6,28 @@ import {
   getOverlappingDaysInIntervals,
   eachDayOfInterval,
   isSunday,
+  differenceInDays,
 } from "date-fns";
 
 import nationalHolidays from "./dates.json";
 
 export function returnNextEndOfHolidayPeriod(startDate) {
-  const dateToCompare = new Date(getYear(parseISO(startDate)), 2, 31);
+  const dateToCompare = new Date(`${getYear(parseISO(startDate))}-03-31`);
 
-  if (
-    isBefore(parseISO(startDate), parseISO(format(dateToCompare, "yyyy-MM-dd")))
-  ) {
+  if (isBefore(parseISO(startDate), parseISO(dateToCompare))) {
     return dateToCompare;
   } else {
-    return new Date(getYear(parseISO(startDate)) + 1, 2, 31);
+    return new Date(`${getYear(parseISO(startDate)) + 1}-03-31`);
+  }
+}
+
+export function lengthIsValid(startDate, endDate) {
+  const length = differenceInDays(parseISO(endDate), parseISO(startDate)) + 1;
+
+  if (length > 50) {
+    return false;
+  } else {
+    return true;
   }
 }
 
@@ -26,22 +35,17 @@ export function isWithinHolidayPeriod(startDate, endDate) {
   const overLappingDays = getOverlappingDaysInIntervals(
     {
       start: parseISO(startDate),
-      end: parseISO(endDate),
+      end: returnNextEndOfHolidayPeriod(startDate),
     },
     {
       start: parseISO(startDate),
-      end: parseISO(
-        format(returnNextEndOfHolidayPeriod(startDate), "yyyy-MM-dd")
-      ),
+      end: parseISO(endDate),
     }
   );
 
-  const intervalDays = eachDayOfInterval({
-    start: parseISO(startDate),
-    end: parseISO(endDate),
-  });
+  const intervalDays = differenceInDays(parseISO(endDate), parseISO(startDate));
 
-  if (overLappingDays !== intervalDays.length - 1) {
+  if (overLappingDays !== intervalDays) {
     return false;
   } else {
     return true;

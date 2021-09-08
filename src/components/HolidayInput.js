@@ -11,11 +11,7 @@ const HolidayInput = ({ setError, setMessage }) => {
     e.preventDefault();
 
     try {
-      const holidays = holidayPlanner.countHolidays(
-        startDate,
-        endDate,
-        "Finland"
-      );
+      const holidays = holidayPlanner.countHolidays(startDate, endDate);
 
       setMessage(
         `This interval will consume ${holidays} days of your available vacation days.`
@@ -23,6 +19,7 @@ const HolidayInput = ({ setError, setMessage }) => {
     } catch (error) {
       setError(true);
       setMessage(error.message);
+      console.error(error);
 
       setTimeout(() => {
         setError(false);
